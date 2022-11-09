@@ -33,7 +33,7 @@ def _compareStr(a: str, b: str) -> bool:
     if bool(dta)^bool(dtb):
         return False
     if (dta is not None) and (dtb is not None):
-        if abs(dta - dtb) > timedelta(seconds=10):
+        if abs(dta - dtb) > timedelta(seconds=1):
             return False
         return True
     return _compareAny(a, b)
@@ -45,8 +45,6 @@ _compare: dict[type, Callable[[Any, Any], bool]] = {
 }
 
 def compare(a: Any, b: Any):
-    print(a)
-    print(b)
     t = type(a)
     if t != type(b):
         return False
